@@ -107,4 +107,25 @@ router.get('/', protect, admin, async (req, res) => {
     }
 });
 
+// Update Attendance (Admin only)
+router.put('/:id', protect, admin, async (req, res) => {
+    try {
+        const { status, clockIn, clockOut } = req.body;
+        const attendance = await Attendance.findById(req.params.id);
+
+        if (attendance) {
+            attendance.status = status || attendance.status;
+            attendance.clockIn = clockIn || attendance.clockIn;
+            attendance.clockOut = clockOut || attendance.clockOut;
+
+            const updatedAttendance = await attendance.save();
+            res.json(updatedAttendance);
+        } else {
+            res.status(404).json({ message: 'Attendance record not found' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 export default router;

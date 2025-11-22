@@ -56,30 +56,30 @@ const EmployeeDashboard: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4 transition-colors">
             <div className="absolute top-4 right-4">
-                <button onClick={logout} className="flex items-center gap-2 text-gray-600 hover:text-red-600">
+                <button onClick={logout} className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors">
                     <LogOut size={20} /> Logout
                 </button>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-md w-full text-center transition-colors">
                 <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-gray-800">Welcome, {user?.username}</h1>
-                    <p className="text-gray-500">Employee Dashboard</p>
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Welcome, {user?.username}</h1>
+                    <p className="text-gray-500 dark:text-gray-400">Employee Dashboard</p>
                 </div>
 
                 <div className="mb-8">
-                    <div className="text-5xl font-mono font-bold text-indigo-600 mb-2">
+                    <div className="text-5xl font-mono font-bold text-indigo-600 dark:text-indigo-400 mb-2">
                         {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                     </div>
-                    <div className="text-gray-500">
+                    <div className="text-gray-500 dark:text-gray-400">
                         {currentTime.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                     </div>
                 </div>
 
                 {message && (
-                    <div className={`mb-6 p-3 rounded ${message.includes('Error') || message.includes('Already') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                    <div className={`mb-6 p-3 rounded ${message.includes('Error') || message.includes('Already') ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'}`}>
                         {message}
                     </div>
                 )}

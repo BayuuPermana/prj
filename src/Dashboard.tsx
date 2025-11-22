@@ -3,14 +3,12 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Stats from './components/Stats';
 import EmployeeList from './components/EmployeeList';
-import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
-  console.log("Rendering Dashboard");
   return (
-    <div className="dashboard">
+    <div className="flex h-screen bg-white dark:bg-gray-900">
       <Sidebar />
-      <div className="main-content">
+      <div className="flex-1 flex flex-col bg-gray-50 dark:bg-gray-900 overflow-auto">
         <Header />
         <Stats />
         <EmployeeList />
